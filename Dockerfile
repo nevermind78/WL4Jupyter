@@ -16,8 +16,6 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 WORKDIR ${HOME}
-USER ${USER}
-
 RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 WORKDIR WolframLanguageForJupyter
 CMD ["./configure-jupyter.wls add"]
