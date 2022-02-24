@@ -17,6 +17,5 @@ RUN echo "Checking for 'apt.txt'..." \
         ; fi
 USER ${NB_USER}
 
-RUN wget https://files.wolframcdn.com/WolframEngine/13.0.0.0/WolframEngine_13.0.0_LINUX.sh?4ae6ee529e4e0d5967853f9964b23dfeb8566c7eb008cacb7094260839eb0c474b9195c272a438a9c23775a1240e74dd4dbf1da4068cb31f233e5315b1d56acfc159268aee609cfd582a1ab8854714067bbd2190811ff63c6849673be597f0eb74f02857c7LINUX_.sh
-RUN bash WolframEngine_13.0.0_LINUX.sh?4ae6ee529e4e0d5967853f9964b23dfeb8566c7eb008cacb7094260839eb0c474b9195c272a438a9c23775a1240e74dd4dbf1da4068cb31f233e5315b1d56acfc159268aee609cfd582a1ab8854714067bbd2190811ff63c6849673be597f0eb74f02857c7LINUX_.sh
-RUN rm WolframEngine_13.0.0_LINUX.sh?4ae6ee529e4e0d5967853f9964b23dfeb8566c7eb008cacb7094260839eb0c474b9195c272a438a9c23775a1240e74dd4dbf1da4068cb31f233e5315b1d56acfc159268aee609cfd582a1ab8854714067bbd2190811ff63c6849673be597f0eb74f02857c7LINUX_.sh
+RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
+RUN ./configure-jupyter.wls add
