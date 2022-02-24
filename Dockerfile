@@ -5,6 +5,10 @@ RUN pip install --no-cache --upgrade pip && \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git
+RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
+WORKDIR WolframLanguageForJupyter
+CMD ["./configure-jupyter.wls add"]
+
 # create user with a home directory
 ARG NB_USER
 ARG NB_UID
@@ -16,6 +20,3 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 WORKDIR ${HOME}
-RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
-WORKDIR WolframLanguageForJupyter
-CMD ["./configure-jupyter.wls add"]
