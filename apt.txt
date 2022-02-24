@@ -1,0 +1,2 @@
+wget https://www.wolfram.com/engine/free-download-thank-you/?operatingSystem=LINUX
+bash installer.sh
