@@ -1,4 +1,3 @@
-FROM rocker/binder:4.1.2
 
 ## Declares build arguments
 ARG NB_USER
@@ -18,5 +17,4 @@ RUN echo "Checking for 'apt.txt'..." \
 USER ${NB_USER}
 
 RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
-WORKDIR WolframLanguageForJupyter
 CMD [ "bash", "./configure-jupyter.wls add" ]
