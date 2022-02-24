@@ -20,5 +20,5 @@ RUN adduser --disabled-password \
     ${NB_USER}
 WORKDIR ${HOME}
 WORKDIR WolframLanguageForJupyter
-CMD ["dpkg -i WolframScript_12.0.0_LINUX64_x86_64.deb"]
-CMD ["./configure-jupyter.wls add"]
+RUN dpkg -i WolframScript_12.0.0_LINUX64_x86_64.deb
+RUN ./configure-jupyter.wls add"]
