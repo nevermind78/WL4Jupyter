@@ -19,4 +19,4 @@ USER ${NB_USER}
 
 RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 WORKDIR WolframLanguageForJupyter
-RUN ./configure-jupyter.wls add
+CMD [ "bash", "./configure-jupyter.wls add" ]
