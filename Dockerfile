@@ -19,5 +19,5 @@ WORKDIR ${HOME}
 USER ${USER}
 
 RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
-
-CMD [ "bash", "./configure-jupyter.wls add" ]
+WORKDIR WolframLanguageForJupyter
+RUN ./configure-jupyter.wls add
