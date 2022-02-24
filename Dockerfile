@@ -1,21 +1,20 @@
-FROM jupyter/scipy-notebook:cf6258237ff9
+FROM python:3.9-slim
+# install the notebook package
+RUN pip install --no-cache --upgrade pip && \
+    pip install --no-cache notebook jupyterlab
 
-## Declares build arguments
+# create user with a home directory
 ARG NB_USER
 ARG NB_UID
+ENV USER ${NB_USER}
+ENV HOME /home/${NB_USER}
 
-COPY --chown=${NB_USER} . ${HOME}
-
-ENV DEBIAN_FRONTEND=noninteractive
-USER root
-RUN echo "Checking for 'apt.txt'..." \
-        ; if test -f "apt.txt" ; then \
-        apt-get update --fix-missing > /dev/null\
-        && xargs -a apt.txt apt-get install --yes \
-        && apt-get clean > /dev/null \
-        && rm -rf /var/lib/apt/lists/* \
-        ; fi
-USER ${NB_USER}
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+WORKDIR ${HOME}
+USER ${USER}
 
 RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 CMD [ "bash", "./configure-jupyter.wls add" ]
