@@ -5,7 +5,7 @@ RUN pip install --no-cache --upgrade pip && \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git
-RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
+
 
 
 # create user with a home directory
@@ -19,6 +19,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 WORKDIR ${HOME}
+RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 CMD ["dpkg -i WolframScript_13.0.0_LINUX64_amd64.deb"]
 WORKDIR WolframLanguageForJupyter
 CMD ["./configure-jupyter.wls add"]
