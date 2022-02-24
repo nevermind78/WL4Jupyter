@@ -1,4 +1,4 @@
-
+FROM ubuntu
 ## Declares build arguments
 ARG NB_USER
 ARG NB_UID
