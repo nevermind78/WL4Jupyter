@@ -18,7 +18,7 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-WORKDIR ${HOME}
+
 RUN git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git
 CMD ["dpkg -i WolframScript_13.0.0_LINUX64_amd64.deb"]
 WORKDIR WolframLanguageForJupyter
